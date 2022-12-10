@@ -1,0 +1,42 @@
+{
+  "pages": [
+        "pages/config/config",
+    "pages/index/index",
+    "pages/select/select",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#3cc51f",
+    "backgroundColor": "#eee",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "转盘",
+        "iconPath": "image/icon.png",
+        "selectedIconPath": "image/icon-HL.png"
+      },
+      {
+        "pagePath": "pages/select/select",
+        "text": "选择转盘",
+        "iconPath": "image/icon.png",
+        "selectedIconPath": "image/icon-HL.png"
+      },
+      {
+        "pagePath": "pages/config/config",
+        "text": "设置",
+        "iconPath": "image/icon.png",
+        "selectedIconPath": "image/icon-HL.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

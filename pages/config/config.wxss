@@ -1,0 +1,9 @@
+/* pages/config/config.wxss */
+.trunTable1 {
+        width: 300px;
+        height: 150px;
+        display: block;
+        position: relative;
+        border-color: yellow;
+        border: solid;
+}
