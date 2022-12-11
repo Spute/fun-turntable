@@ -7,7 +7,12 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        records: [
+            { content: '8元红包' },
+            { content: '6元红包' },
+            { content: '7元红包' },
+            { content: '3元红包' },
+        ]
     },
 
     /**
@@ -30,36 +35,27 @@ Page({
                 { 'index': 3, 'name': '8元红包' },
                 { 'index': 4, 'name': '10元话费' },
                 // { 'index': 5, 'name': '10元红包' }
-            ]
+            ],
+            title: '大转盘抽奖',
+            subTitle: "感恩节活动大抽奖，反馈广大客户",
         }
         this.drawTruntable()
+        this.setData({
+            title: app.awardsConfig['title'],
+            subTitle: app.awardsConfig['subTitle']
+        })
     },
 
-    drawTruntable(res) {
-        const rotateDeg = 180
-        console.log(res)
-        if (res[0] == null) {
-            return
-        }
-        const canvas = res[0].node
-        const ctx = canvas.getContext('2d')
-        // ctx.lineWidth = 4
-        ctx.strokeStyle = 'red'
-        // ctx.lineCap = "round"/project.config.json
-        ctx.beginPath()
-        ctx.translate(50, 50)
-        // ctx.moveTo(0,0)
-        ctx.moveTo(0, 0)
-        // ctx.rotate(rotateDeg*Math.PI/180)
-        // ctx.rect(105, 205, 10, 10)
-        ctx.lineTo(100, 100)
-        // ctx.arc(0,0,50,0,rotateDeg*Math.PI/180,false);
-
-        // ctx.lineTo(0,0)
-        ctx.stroke()
-    },
     start() {
         this.animationHandler()
+    },
+    clearRecord() {
+        this.data.records = []
+
+        this.setData({
+            records: this.data.records
+        })
+        console.log('clear record',this.data)
     },
     animationHandler() {
         // 旋转抽奖
@@ -105,50 +101,62 @@ Page({
 
     },
     getLottery: function () {
-        var that = this
-        var awardIndex = Math.random() * 6 >>> 0;
-    
-        // 获取奖品配置
         var awardsConfig = app.awardsConfig,
-            runNum = 8
+        runNum = 8
+        var that = this
+        var awardIndex = Math.random() * awardsConfig.awards.length >>> 0;
+
+        // 获取奖品配置
+
         if (awardIndex < 2) awardsConfig.chance = false
-        console.log(awardIndex)
-    
+        console.log("awardIndex", awardIndex)
+
         // 旋转抽奖
         app.runDegs = app.runDegs || 0
         console.log('deg', app.runDegs)
         app.runDegs = app.runDegs + (360 - app.runDegs % 360) + (360 * runNum - awardIndex * (360 / 6))
         console.log('deg', app.runDegs)
-    
+
         var animationRun = wx.createAnimation({
-          duration: 4000,
-          timingFunction: 'ease'
+            duration: 4000,
+            timingFunction: 'ease'
         })
         that.animationRun = animationRun
         animationRun.rotate(app.runDegs).step()
         that.setData({
-          animationData: animationRun.export(),
-          btnDisabled: 'disabled'
+            animationData: animationRun.export(),
+            btnDisabled: 'disabled'
         })
-    
-         // 记录奖品
-        var winAwards = wx.getStorageSync('winAwards') || {data:[]}
+
+        // 记录奖品
+        var winAwards = wx.getStorageSync('winAwards') || { data: [] }
         winAwards.data.push(awardsConfig.awards[awardIndex].name + '1个')
         wx.setStorageSync('winAwards', winAwards)
-    
+
+        // 更新记录
+        console.log(this.data,'reocrd')
+        this.data.records.push({
+            'content': awardsConfig.awards[awardIndex].name
+        });
+        this.setData({
+            records: this.data.records
+        })
+
         // 中奖提示
-        setTimeout(function() {
-          wx.showModal({
-            title: '恭喜',
-            content: '获得' + (awardsConfig.awards[awardIndex].name),
-            showCancel: false
-          })
-          if (awardsConfig.chance) {
-            that.setData({
-              btnDisabled: ''
-            })  
-          }
+        setTimeout(function () {
+            wx.showModal({
+                title: '恭喜',
+                content: '获得' + (awardsConfig.awards[awardIndex].name),
+                showCancel: false
+            })
+            if (awardsConfig.chance) {
+                that.setData({
+                    btnDisabled: ''
+                })
+            }
+
         }, 4000);
 
-      },
+
+    },
 })

@@ -1,1 +1,29 @@
-/* pages/select.wxss */
+.top-menu {
+    display: flex;
+    position: fixed;
+    height: 80rpx;
+    z-index: 10;
+    background-color: #fff;
+    width: 100%;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 2rpx solid #ddd;
+    border-bottom: 2rpx solid #ddd;
+    font-size: 11pt;
+    color: #bdbdbd;
+  }
+  
+  .line {
+    width: 2rpx;
+    height: 100%;
+    background-color: #ddd;
+  }
+
+  .menu-select{
+      background-color: yellow;
+  }
+  .menu-noselect{
+      background-color: white;
+  }

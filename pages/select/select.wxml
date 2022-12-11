@@ -1,2 +1,5 @@
-<!--pages/select.wxml-->
-<text>pages/select.wxml</text>
+<view class="top-menu">
+    <view bindtap="showMenuTap" data-type="1" class="{{leftStyle}}">热门转盘</view>
+    <view class="line"></view>
+    <view bindtap="showMenuTap" data-type="2" class="{{rightStyle}}">个人转盘</view>
+  </view>

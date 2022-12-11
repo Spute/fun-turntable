@@ -1,49 +1,39 @@
 <view class="wrapper">
 
-    <view class="header">
-        <text class="header-title"> 大转盘抽奖 </text>
-        <!-- <text class="header-subtitle"> 感恩节活动大抽奖，反馈广大客户 </text> -->
-    </view>
+<view class="header">
+        <text class="header-title"> {{title}} </text>
+        <text class="header-subtitle"> {{subTitle}} </text>
+</view>
 
-    <view class="main">
+<view class="main">
         <view class="canvas-container">
-        <view  animation="{{animationData}}" class="canvas-content" >
-                <canvas style="width: 300px; height: 300px;" class="canvas-element" canvas-id="lotteryCanvas"></canvas>
+                <view animation="{{animationData}}" class="canvas-content">
 
-                <view class="canvas-line">
-                    <view class="canvas-litem" wx:for="{{[{award: '1元红包',lineTurn: '0.08333333333333333turn',turn: '0turn'}]}}"
-                        wx:key="unique" style="-webkit-transform: rotate({{item.lineTurn}});transform: rotate({{item.lineTurn}})">
-                    </view>
-            </view>
+                        <view class="canvas-line">
+                                <view class="canvas-litem" wx:for="{{awardsList}}" wx:key="unique" style="-webkit-transform: rotate({{item.lineTurn}});transform: rotate({{item.lineTurn}})"></view>
+                        </view>
 
-            <view class="canvas-list">
-                <view class="canvas-item" wx:for="{{awardsList}}" wx:key="unique">
-                    <view class="canvas-item-text"
-                          style="-webkit-transform: rotate({{item.turn}});transform: rotate({{item.turn}})">{{item.award}}
-                    </view>
+                        <view class="canvas-list">
+                                <view class="canvas-item" wx:for="{{awardsList}}" wx:key="unique">
+                                        <view class="canvas-item-text" style="-webkit-transform: rotate({{item.turn}});transform: rotate({{item.turn}})">{{item.award}}</view>
+                                </view>
+                        </view>
+
+
                 </view>
-            </view>
 
-
+                <view bindtap="getLottery" class="canvas-btn {{btnDisabled}}">抽奖</view>
         </view>
 
-        <view bindtap="getLottery" class="canvas-btn {{btnDisabled}}">抽奖</view>
-    </view>
-
-    <view class="main-container">
-        <view class="main-container-btn">
-            <button bindtap="gotoList" type="primary">查看中奖</button>
+        <view class="main-container">
+                <view class="main-container-btn">
+                        <button bindtap="clearRecord" type="primary">清空记录</button>
+                </view>
+                <view class="main-container-record">
+                        <text class="main-record-title">记录：</text>
+                        <text class="main-record-item" wx:for="{{records}}">{{(index+1)+ '. ' + item.content}}</text>                </view>
         </view>
-        <view class="main-container-rule">
-            <text class="main-rule-title">活动规则：</text>
-            <text class="main-rule-item">1. xxxxxxxxxxx</text>
-            <text class="main-rule-item">2. xxxxxxxxxxx</text>
-            <text class="main-rule-item">3. xxxxxxxxxxx</text>
-            <text class="main-rule-item">4. xxxxxxxxxxx</text>
-            <text class="main-rule-item">5. xxxxxxxxxxx</text>
-        </view>
-    </view>
 
 </view>
 
-        </view>
+</view>
