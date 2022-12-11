@@ -7,8 +7,7 @@
 
     <view class="main">
         <view class="canvas-container">
-            <!--			<view  animation="{{animationData}}" class="canvas-content" >-->
-            <view animation="{}" class="canvas-content">
+        <view  animation="{{animationData}}" class="canvas-content" >
                 <canvas style="width: 300px; height: 300px;" class="canvas-element" canvas-id="lotteryCanvas"></canvas>
 
                 <view class="canvas-line">
