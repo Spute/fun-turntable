@@ -3,3 +3,8 @@
     <view class="line"></view>
     <view bindtap="showMenuTap" data-type="2" class="{{rightStyle}}">个人转盘</view>
   </view>
+<view class="select-bar">
+<view wx:for="{{hotSelect}}" class="select-bar-item" bindtap="selectTurnTable" data-type="{{index}}">
+    {{item.title}}
+</view>
+</view>

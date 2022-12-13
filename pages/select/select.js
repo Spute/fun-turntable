@@ -1,4 +1,6 @@
 // pages/select.js
+
+const app = getApp()
 Page({
 
     /**
@@ -11,26 +13,26 @@ Page({
             {
                 title: '聚餐吃什么？',
                 selects: [
-                    "日本料理",
-                    "火锅",
-                    "自己多少斤心里没点数",
-                    "泰国菜",
-                    "海鲜",
-                    "烤鱼",
-                    "拉面",
-                    "麻辣烫",
-                    "自助餐",
+                    { 'name': "日本料理" },
+                    { 'name': "火锅" },
+                    { 'name': "自己多少斤心里没点数" },
+                    { 'name': "泰国菜" },
+                    { 'name': "海鲜" },
+                    { 'name': "烤鱼" },
+                    { 'name': "拉面" },
+                    { 'name': "麻辣烫" },
+                    { 'name': "自助餐" },
                 ]
             },
             {
                 title: '今天谁买单？',
                 selects: [
-                    "身高最高的",
-                    "微信好友最多的",
-                    "年龄最小的",
-                    "年龄最大的",
-                    "头发最短的",
-                    "头发最长的",
+                    { "name": "身高最高的" },
+                    { "name": "微信好友最多的" },
+                    { "name": "年龄最小的" },
+                    { "name": "年龄最大的" },
+                    { "name": "头发最短的" },
+                    { "name": "头发最长的" },
                 ]
             },
         ]
@@ -90,5 +92,19 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+    selectTurnTable(event) {
+        console.log(event)
+        const selectIndex = event.currentTarget.dataset.type
+        app.awardsConfig = {
+            chance: true,
+            awards: this.data.hotSelect[selectIndex].selects,
+            title: this.data.hotSelect[selectIndex].title,
+            subTitle: "感恩节活动大抽奖，反馈广大客户",
+        }
+        wx.reLaunch({
+            url: '/pages/index/index',
+        }
+        )
     }
 })

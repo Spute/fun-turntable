@@ -90,6 +90,8 @@ page {
   text-align: center; 
   -webkit-transform-origin: 50% 150px; 
   transform-origin: 50% 150px;
+  word-wrap: break-word;
+  width: 60px;
 }
 
 /* 分隔线 */

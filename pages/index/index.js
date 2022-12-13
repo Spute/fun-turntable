@@ -7,11 +7,22 @@ Page({
      * 页面的初始数据
      */
     data: {
-        records: [
-            { content: '8元红包' },
-            { content: '6元红包' },
-            { content: '7元红包' },
-            { content: '3元红包' },
+        // records: [
+        //     { content: '8元红包' },
+        //     { content: '6元红包' },
+        //     { content: '7元红包' },
+        //     { content: '3元红包' },
+        // ]
+        records:[
+            {content:"日本料理"},
+            {content:"火锅"},
+            {content:"自己多少斤心里没点数"},
+            {content:"泰国菜"},
+            {content:"海鲜"},
+            {content:"烤鱼"},
+            {content:"拉面"},
+            {content:"麻辣烫"},
+            {content:"自助餐"},
         ]
     },
 
@@ -28,13 +39,24 @@ Page({
     onReady() {
         app.awardsConfig = {
             chance: true,
+            // awards: [
+            //     { 'index': 0, 'name': '1元红包' },
+            //     { 'index': 1, 'name': '5元话费' },
+            //     { 'index': 2, 'name': '6元红包' },
+            //     { 'index': 3, 'name': '8元红包' },
+            //     { 'index': 4, 'name': '10元话费' },
+            //     // { 'index': 5, 'name': '10元红包' }
+            // ],
             awards: [
-                { 'index': 0, 'name': '1元红包' },
-                { 'index': 1, 'name': '5元话费' },
-                { 'index': 2, 'name': '6元红包' },
-                { 'index': 3, 'name': '8元红包' },
-                { 'index': 4, 'name': '10元话费' },
-                // { 'index': 5, 'name': '10元红包' }
+                {'name':"日本料理"},
+                {'name':"火锅"},
+                {'name':"自己多少斤心里没点数"},
+                {'name':"泰国菜"},
+                {'name':"海鲜"},
+                {'name':"烤鱼"},
+                {'name':"拉面"},
+                {'name':"麻辣烫"},
+                {'name':"自助餐"}
             ],
             title: '大转盘抽奖',
             subTitle: "感恩节活动大抽奖，反馈广大客户",
@@ -114,7 +136,7 @@ Page({
         // 旋转抽奖
         app.runDegs = app.runDegs || 0
         console.log('deg', app.runDegs)
-        app.runDegs = app.runDegs + (360 - app.runDegs % 360) + (360 * runNum - awardIndex * (360 / 6))
+        app.runDegs = app.runDegs + (360 - app.runDegs % 360) + (360 * runNum - awardIndex * (360 / awardsConfig.awards.length))
         console.log('deg', app.runDegs)
 
         var animationRun = wx.createAnimation({

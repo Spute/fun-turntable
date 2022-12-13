@@ -27,3 +27,16 @@
   .menu-noselect{
       background-color: white;
   }
+
+  .select-bar{
+      display: block;
+      margin-top: 50px;
+      border: 3rpx solid #ddd;
+      
+  }
+
+  .select-bar-item{
+    display: block;
+    border: 2rpx solid blue;
+    margin: 6rpx;
+}
