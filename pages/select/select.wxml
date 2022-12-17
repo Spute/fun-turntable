@@ -6,7 +6,6 @@
 <view class="select-container">
     <view wx:for="{{hotSelect}}" wx:key="title" class="item-container" wx:for-item="title" wx:for-index="titleIndex">
         <view class="select-item">
-        <!-- <input type="text" class="select-item" maxlength="48" bindbulr="inputTitle" value="{{title.title}}"/> -->
             {{title.title}}
             <view class="sub-item" wx:for="{{title.selects}}" wx:for-item="subItem" wx:for-index="subItemIndex" wx:if="{{title.display}}">
 

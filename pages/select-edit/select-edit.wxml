@@ -1,2 +1,15 @@
 <!--pages/select-edit/select-edit.wxml-->
-<text>pages/select-edit/select-edit.wxml</text>
+<view class="container">
+    <view class="title">
+        <text>标题：</text>
+        <input type="text" class="select-item" maxlength="48" bindbulr="inputTitle" value="{{title.title}}" />
+        <view class="add-btn" bindtap="editTurnTable" data-titleIndex="{{titleIndex}}">编辑</view>
+
+    </view>
+    <view class="item-container">
+        <text>选项{{index}}：</text>
+        <input type="text" class="select-item" maxlength="48" bindbulr="inputTitle" value="{{title.title}}" />
+        <view class="add-btn" bindtap="editTurnTable" data-titleIndex="{{titleIndex}}">编辑</view>
+
+    </view>
+</view>

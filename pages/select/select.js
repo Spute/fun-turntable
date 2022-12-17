@@ -16,20 +16,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-    //     console.log(app.hotSelect,app)
-    //     this.data.hotSelect=app.hotSelect
-    //     console.log(this.data)
+        //     console.log(app.hotSelect,app)
+        //     this.data.hotSelect=app.hotSelect
+        //     console.log(this.data)
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-        console.log(app.hotSelect,app)
-        this.data.hotSelect=app.hotSelect
+        console.log(app.hotSelect, app)
+        this.data.hotSelect = app.hotSelect
         console.log(this.data)
         this.setData({
-            'hotSelect':this.data.hotSelect
+            'hotSelect': this.data.hotSelect
         })
     },
 
@@ -85,25 +85,29 @@ Page({
         }
         wx.reLaunch({
             url: '/pages/index/index',
-        }
-        )
+        })
     },
-    dropSelect(event){
+    editTurnTable(event) {
+        wx.reLaunch({
+            url: '/pages/select-edit/select-edit',
+        })
+    },
+    dropSelect(event) {
         console.log("event", event)
         const titleIndex = event.currentTarget.dataset.titleindex
         console.log(app.hotSelect[titleIndex].display)
         app.hotSelect[titleIndex]['display'] = !app.hotSelect[titleIndex].display
-        console.log('data',this.data)
+        console.log('data', this.data)
         this.setData({
-            hotSelect:app.hotSelect,
+            hotSelect: app.hotSelect,
             // "title.display": this.data.hotSelect[selectIndex].display
         })
     },
-    inputBlur(event){
+    inputBlur(event) {
         console.log("event", event)
         const titleIndex = event.currentTarget.dataset.titleindex
         const subIndex = event.currentTarget.dataset.subindex
-        console.log(titleIndex,app.hotSelect[titleIndex],event.detail.value)
+        console.log(titleIndex, app.hotSelect[titleIndex], event.detail.value)
         app.hotSelect[titleIndex]['selects'][subIndex].name = event.detail.value
     },
 })
