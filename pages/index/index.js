@@ -13,40 +13,27 @@ Page({
         //     { content: '7元红包' },
         //     { content: '3元红包' },
         // ]
-        records:[
-            {content:"日本料理"},
-            {content:"火锅"},
-            {content:"自己多少斤心里没点数"},
-            {content:"泰国菜"},
-            {content:"海鲜"},
-            {content:"烤鱼"},
-            {content:"拉面"},
-            {content:"麻辣烫"},
-            {content:"自助餐"},
-        ]
+        // records:[
+        //     {content:"日本料理"},
+        //     {content:"火锅"},
+        //     {content:"自己多少斤心里没点数"},
+        //     {content:"泰国菜"},
+        //     {content:"海鲜"},
+        //     {content:"烤鱼"},
+        //     {content:"拉面"},
+        //     {content:"麻辣烫"},
+        //     {content:"自助餐"},
+        // ]
+        records:[]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-        app.awardsConfig = {
+        console.log('options',options)
+        app.awardsConfig = app.awardsConfig || {
             chance: true,
-            // awards: [
-            //     { 'index': 0, 'name': '1元红包' },
-            //     { 'index': 1, 'name': '5元话费' },
-            //     { 'index': 2, 'name': '6元红包' },
-            //     { 'index': 3, 'name': '8元红包' },
-            //     { 'index': 4, 'name': '10元话费' },
-            //     // { 'index': 5, 'name': '10元红包' }
-            // ],
             awards: [
                 {'name':"日本料理"},
                 {'name':"火锅"},
@@ -58,14 +45,21 @@ Page({
                 {'name':"麻辣烫"},
                 {'name':"自助餐"}
             ],
-            title: '大转盘抽奖',
-            subTitle: "感恩节活动大抽奖，反馈广大客户",
+            title: '聚餐吃什么？',
+            subTitle: "",
         }
         this.drawTruntable()
         this.setData({
             title: app.awardsConfig['title'],
             subTitle: app.awardsConfig['subTitle']
         })
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady() {
+
     },
 
     start() {
@@ -140,7 +134,7 @@ Page({
         console.log('deg', app.runDegs)
 
         var animationRun = wx.createAnimation({
-            duration: 4000,
+            duration: 3000,
             timingFunction: 'ease'
         })
         that.animationRun = animationRun

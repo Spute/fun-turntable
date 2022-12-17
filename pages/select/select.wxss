@@ -1,42 +1,89 @@
 .top-menu {
     display: flex;
+    justify-content: space-around;
+
     position: fixed;
-    height: 80rpx;
+    /* height: 80rpx; */
     z-index: 10;
-    background-color: #fff;
+    
+    /* background-color: #fff; */
     width: 100%;
     top: 0;
     left: 0;
-    align-items: center;
-    justify-content: space-around;
-    border-top: 2rpx solid #ddd;
-    border-bottom: 2rpx solid #ddd;
+    /* align-items: center; */
+    /* border-top: 2rpx solid blue;
+    border-bottom: 2rpx solid blue; */
     font-size: 11pt;
-    color: #bdbdbd;
-  }
-  
-  .line {
+    /* color: #bdbdbd; */
+}
+
+.line {
     width: 2rpx;
     height: 100%;
-    background-color: #ddd;
-  }
+    background-color:blue;
+}
 
-  .menu-select{
-      background-color: yellow;
-  }
-  .menu-noselect{
-      background-color: white;
-  }
-
-  .select-bar{
-      display: block;
-      margin-top: 50px;
-      border: 3rpx solid #ddd;
-      
-  }
-
-  .select-bar-item{
-    display: block;
+.menu-select {
+    background-color: #b1d4ea;
+    /* background-color: rgb(204,204,204); */
+    font-size:120%;
+    font-weight: bold;
     border: 2rpx solid blue;
-    margin: 6rpx;
+    border-radius: 10%;
+    padding: 2% 8%;
+    align-content: center;
+}
+
+.menu-noselect {
+    /* background-color: #b1d4ea; */
+    background-color:#fff;
+    font-size:120%;
+    font-weight: bold;
+    border: 2rpx solid blue;
+    border-radius: 10%;
+    padding: 2% 8%;
+    align-content: center;
+}
+
+.select-container {
+    /* display: block; */
+    margin-top: 50px;
+    border: 3rpx solid #ddd;
+    display:flex;
+    flex-direction:column;
+
+}
+.item-container{
+    /* display: block; */
+    flex-direction: row;
+    display: flex;
+    /* flex-direction:row; */
+    margin: 5rpx;
+    justify-content:space-between;
+}
+
+.select-item {
+    display: flex;
+    flex-direction: column;
+    border: 2rpx solid blue;
+    flex: 1;
+    /* margin: 6rpx;
+    height: 60rpx;
+    width: 650rpx; */
+    /* float: left; */
+}
+
+.drop-icon {
+    height: 50rpx;
+    width: 50rpx;
+    /* float: right; */
+    border: 2rpx solid red;
+    margin-right: 30rpx;
+    /* rotate: 180deg; */
+}
+
+.sub-item{
+    background-color:gray;
+    padding-left: 5%;
+    /* visibility:visible; */
 }

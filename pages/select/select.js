@@ -12,6 +12,7 @@ Page({
         hotSelect: [
             {
                 title: '聚餐吃什么？',
+                display: false,
                 selects: [
                     { 'name': "日本料理" },
                     { 'name': "火锅" },
@@ -26,6 +27,7 @@ Page({
             },
             {
                 title: '今天谁买单？',
+                display: false,
                 selects: [
                     { "name": "身高最高的" },
                     { "name": "微信好友最多的" },
@@ -35,6 +37,65 @@ Page({
                     { "name": "头发最长的" },
                 ]
             },
+            {
+                title: '真心话',
+                display: false,
+                selects: [
+                    { "name": "描述经历过最尴尬的事" },
+                    { "name": "带过异性回家吗" },
+                    { "name": "第一次恋爱几岁" },
+                    { "name": "做过最疯狂的事是什么" },
+                    { "name": "单身的感觉好吗" },
+                    { "name": "讲一下你的最近一次分手" },
+                    { "name": "与前任还有联系吗" },
+                    { "name": "你最喜欢的异性风格" },
+                    { "name": "谈过几次恋爱" },
+                    { "name": "多久没看片了" },
+                ]
+            },
+            {
+                title: '狼人杀身份牌',
+                display: false,
+                selects: [
+                    { "name": "预言家" },
+                    { "name": "狼人" },
+                    { "name": "村民" },
+                    { "name": "狼人" },
+                    { "name": "村民" },
+                    { "name": "狼人" },
+                    { "name": "村民" },
+                    { "name": "村民" },
+                    { "name": "猎人" },
+                    { "name": "女巫" },
+                    { "name": "丘比特" },
+                ]
+            },
+            {
+                title: '大冒险',
+                display: false,
+                selects: [
+                    { "name": "公主抱离你最近的异性" },
+                    { "name": "向一位同性表白3分钟" },
+                    { "name": "向一位异性表白3分钟" },
+                    { "name": "脱一件衣服至游戏结束" },
+                    { "name": "做一个最性感的动作" },
+                    { "name": "与异性十指相扣，对视十秒" },
+                ]
+            },
+            {
+                title: '骰子',
+                display: false,
+                selects: [
+                    { "name": "1" },
+                    { "name": "2" },
+                    { "name": "3" },
+                    { "name": "4" },
+                    { "name": "5" },
+                    { "name": "6" },
+                ]
+            },
+
+
         ]
     },
 
@@ -100,11 +161,23 @@ Page({
             chance: true,
             awards: this.data.hotSelect[selectIndex].selects,
             title: this.data.hotSelect[selectIndex].title,
-            subTitle: "感恩节活动大抽奖，反馈广大客户",
+            subTitle: this.data.hotSelect[selectIndex].subTitle,
         }
         wx.reLaunch({
             url: '/pages/index/index',
         }
         )
+    },
+    dropSelect(event){
+        console.log("event", event)
+        const selectIndex = event.currentTarget.dataset.type
+        console.log('selectIndex', selectIndex)
+        console.log(this.data.hotSelect[selectIndex].display)
+        this.data.hotSelect[selectIndex]['display'] = !this.data.hotSelect[selectIndex].display
+        console.log('data',this.data)
+        this.setData({
+            hotSelect:this.data.hotSelect,
+            // "title.display": this.data.hotSelect[selectIndex].display
+        })
     }
 })

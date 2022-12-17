@@ -22,7 +22,7 @@
 
                 </view>
 
-                <view bindtap="getLottery" class="canvas-btn {{btnDisabled}}">抽奖</view>
+                <view bindtap="getLottery" class="canvas-btn {{btnDisabled}}">开始</view>
         </view>
 
         <view class="main-container">
