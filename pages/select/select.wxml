@@ -4,13 +4,21 @@
     <view bindtap="showMenuTap" data-type="2" class="{{rightStyle}}">个人转盘</view>
 </view>
 <view class="select-container">
-    <view wx:for="{{hotSelect}}" wx:key="title" class="item-container" wx:for-item="title">
-        <view class="select-item" bindtap="selectTurnTable" data-type="{{index}}">
+    <view wx:for="{{hotSelect}}" wx:key="title" class="item-container" wx:for-item="title" wx:for-index="titleIndex">
+        <view class="select-item">
+        <!-- <input type="text" class="select-item" maxlength="48" bindbulr="inputTitle" value="{{title.title}}"/> -->
             {{title.title}}
-            <view class="sub-item" wx:for="{{title.selects}}" wx:for-item="subItem" wx:if="{{title.display}}">
-                {{subItem.name}}
+            <view class="sub-item" wx:for="{{title.selects}}" wx:for-item="subItem" wx:for-index="subItemIndex" wx:if="{{title.display}}">
+
+                <input class="weui-input" type="text" maxlength="10" bindblur="inputBlur" value="{{subItem.name}}" data-titleIndex="{{titleIndex}}" data-subIndex="{{subItemIndex}}" />
+
             </view>
         </view>
-        <image class="drop-icon" src="../../image/drop.png" bindtap="dropSelect" data-type="{{index}}"></image>
+        <view class="feature-contianer">
+            <view class="select-btn" bindtap="selectTurnTable" data-titleIndex="{{titleIndex}}">选择转盘</view>
+            <view class="edit-btn" bindtap="editTurnTable" data-titleIndex="{{titleIndex}}">编辑</view>
+            <image class="drop-icon" src="../../image/drop.png" bindtap="dropSelect" data-titleIndex="{{titleIndex}}"></image>
+        </view>
+
     </view>
 </view>

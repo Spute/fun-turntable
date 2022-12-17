@@ -3,7 +3,8 @@
         "pages/select/select",
         "pages/index/index",
         "pages/config/config",
-        "pages/logs/logs"
+        "pages/logs/logs",
+        "pages/select-edit/select-edit"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -16,7 +17,8 @@
         "selectedColor": "#3cc51f",
         "backgroundColor": "#eee",
         "borderStyle": "white",
-        "list": [{
+        "list": [
+            {
                 "pagePath": "pages/index/index",
                 "text": "转盘",
                 "iconPath": "image/icon.png",
