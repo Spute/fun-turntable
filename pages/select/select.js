@@ -88,9 +88,13 @@ Page({
         })
     },
     editTurnTable(event) {
-        wx.reLaunch({
-            url: '/pages/select-edit/select-edit',
-        })
+        // wx.reLaunch({
+        //     url: '/pages/select-edit/select-edit',
+        // })
+        const id = event.currentTarget.dataset.titleindex
+        console.log("id", id)
+        wx.navigateTo({url: '/pages/select-edit/select-edit?id='+ id})
+
     },
     dropSelect(event) {
         console.log("event", event)

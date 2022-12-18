@@ -2,14 +2,20 @@
 <view class="container">
     <view class="title">
         <text>标题：</text>
-        <input type="text" class="select-item" maxlength="48" bindbulr="inputTitle" value="{{title.title}}" />
-        <view class="add-btn" bindtap="editTurnTable" data-titleIndex="{{titleIndex}}">编辑</view>
+        <input type="text" class="select-item" maxlength="48" bindbulr="inputTitle" value="{{selectData.title}}" />
 
     </view>
-    <view class="item-container">
+    <view class="item-container" wx:for="{{selectData.selects}}">
         <text>选项{{index}}：</text>
-        <input type="text" class="select-item" maxlength="48" bindbulr="inputTitle" value="{{title.title}}" />
-        <view class="add-btn" bindtap="editTurnTable" data-titleIndex="{{titleIndex}}">编辑</view>
+        <input type="text" class="select-item" maxlength="48" bindbulr="inputItem" value="{{item.name}}" data-index="{{index}}" />
+        <view class="del-btn" bindtap="delItem" data-titleIndex="{{titleIndex}}">删除</view>
 
     </view>
+    <view class="add-btn" data-titleIndex="{{titleIndex}}">
+        <input type="text" class="select-item" maxlength="48" value="{{item.name}}" data-index="{{index}}" />
+        <view bindtap="addItem">新增</view>
+    </view>
+    <!-- <input type="text" class="select-item" maxlength="10" bindbulr="inputItem" value="{{item.name}}" data-index="{{index}}" /> -->
+
+
 </view>

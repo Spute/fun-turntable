@@ -1,10 +1,11 @@
 {
     "pages": [
         "pages/select/select",
+        "pages/select-edit/select-edit",
+
         "pages/index/index",
         "pages/config/config",
-        "pages/logs/logs",
-        "pages/select-edit/select-edit"
+        "pages/logs/logs"
     ],
     "window": {
         "backgroundTextStyle": "light",

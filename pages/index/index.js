@@ -24,26 +24,26 @@ Page({
         //     {content:"麻辣烫"},
         //     {content:"自助餐"},
         // ]
-        records:[]
+        records: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log('options',options)
+        console.log('options', options)
         app.awardsConfig = app.awardsConfig || {
             chance: true,
             awards: [
-                {'name':"日本料理"},
-                {'name':"火锅"},
-                {'name':"自己多少斤心里没点数"},
-                {'name':"泰国菜"},
-                {'name':"海鲜"},
-                {'name':"烤鱼"},
-                {'name':"拉面"},
-                {'name':"麻辣烫"},
-                {'name':"自助餐"}
+                { 'name': "日本料理" },
+                { 'name': "火锅" },
+                { 'name': "自己多少斤心里没点数" },
+                { 'name': "泰国菜" },
+                { 'name': "海鲜" },
+                { 'name': "烤鱼" },
+                { 'name': "拉面" },
+                { 'name': "麻辣烫" },
+                { 'name': "自助餐" }
             ],
             title: '聚餐吃什么？',
             subTitle: "",
@@ -71,7 +71,7 @@ Page({
         this.setData({
             records: this.data.records
         })
-        console.log('clear record',this.data)
+        console.log('clear record', this.data)
     },
     animationHandler() {
         // 旋转抽奖
@@ -117,8 +117,9 @@ Page({
 
     },
     getLottery: function () {
-        var awardsConfig = app.awardsConfig,
-        runNum = 8
+        var awardsConfig = app.awardsConfig
+        var runNum = 8
+        const trunTime = app.trunTime
         var that = this
         var awardIndex = Math.random() * awardsConfig.awards.length >>> 0;
 
@@ -134,7 +135,7 @@ Page({
         console.log('deg', app.runDegs)
 
         var animationRun = wx.createAnimation({
-            duration: 3000,
+            duration: trunTime,
             timingFunction: 'ease'
         })
         that.animationRun = animationRun
@@ -149,14 +150,7 @@ Page({
         winAwards.data.push(awardsConfig.awards[awardIndex].name + '1个')
         wx.setStorageSync('winAwards', winAwards)
 
-        // 更新记录
-        console.log(this.data,'reocrd')
-        this.data.records.push({
-            'content': awardsConfig.awards[awardIndex].name
-        });
-        this.setData({
-            records: this.data.records
-        })
+
 
         // 中奖提示
         setTimeout(function () {
@@ -171,8 +165,16 @@ Page({
                 })
             }
 
-        }, 4000);
+            // 更新记录
+            console.log(that.data, 'reocrd')
+            that.data.records.push({
+                'content': awardsConfig.awards[awardIndex].name
+            });
+            that.setData({
+                records: that.data.records
+            })
 
+        }, trunTime, that);
 
     },
 })

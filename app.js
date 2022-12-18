@@ -15,8 +15,8 @@ App({
     },
     globalData: {
         userInfo: null,
-
     },
+    trunTime: 3000,
     hotSelect: [
         {
             title: '聚餐吃什么？',

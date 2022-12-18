@@ -1,1 +1,25 @@
 /* pages/select-edit/select-edit.wxss */
+.container{
+    display: flex;
+    flex-direction: column;
+    /* justify-content:flex-start; */
+    width: 650rpx;
+}
+
+.title{
+    border: 2rpx solid blue;
+    display: flex;
+}
+
+.item-container{
+    border: 2rpx solid blue;
+    display: flex;
+}
+
+.add-btn{
+    border: 2rpx solid blue;
+    display: flex;
+    /* flex-direction: row-reverse; */
+    justify-content: space-between;
+    
+}
