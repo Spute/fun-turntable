@@ -92,13 +92,12 @@ Page({
     },
     inputTitle(event) {
         console.log("event", event)
-        console.log(titleIndex, app.hotSelect[titleIndex], event.detail.value)
         this.data.selectData['title'] = event.detail.value
     },
     inputItem(event) {
         console.log("event", event)
         const index = event.currentTarget.dataset.index
-        console.log(titleIndex, app.hotSelect[titleIndex], event.detail.value)
+        console.log(index, app.hotSelect[index], event.detail.value)
         this.data.selectData['selects'][index].name = event.detail.value
 
     },
