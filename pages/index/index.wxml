@@ -6,32 +6,36 @@
 </view>
 
 <view class="main">
-        <view class="canvas-container">
-                <view animation="{{animationData}}" class="canvas-content">
+        <view class="table-container">
+                <view animation="{{animationData}}" class="table-content">
 
-                        <view class="canvas-line">
-                                <view class="canvas-litem" wx:for="{{awardsList}}" wx:key="unique" style="-webkit-transform: rotate({{item.lineTurn}});transform: rotate({{item.lineTurn}})"></view>
+                        <view class="table-line">
+                                <view class="table-litem" wx:for="{{awardsList}}" wx:key="unique" style="-webkit-transform: rotate({{item.lineTurn}});transform: rotate({{item.lineTurn}})"></view>
                         </view>
 
-                        <view class="canvas-list">
-                                <view class="canvas-item" wx:for="{{awardsList}}" wx:key="unique">
-                                        <view class="canvas-item-text" style="-webkit-transform: rotate({{item.turn}});transform: rotate({{item.turn}})">{{item.award}}</view>
+                        <view class="table-list">
+                                <view class="table-item" wx:for="{{awardsList}}" wx:key="unique">
+                                        <view class="table-item-text" style="-webkit-transform: rotate({{item.turn}});transform: rotate({{item.turn}})">{{item.award}}</view>
                                 </view>
                         </view>
 
 
                 </view>
 
-                <view bindtap="getLottery" class="canvas-btn {{btnDisabled}}">开始</view>
+                <view bindtap="getLottery" class="table-btn {{btnDisabled}}">开始</view>
         </view>
 
         <view class="main-container">
                 <view class="main-container-btn">
-                        <button bindtap="clearRecord" type="primary">清空记录</button>
+                    <button bindtap="share" class="share-btn" open-type="share">分享好友</button>
+                    <button bindtap="clearRecord" type="primary">清空记录</button>
+
+                    <button bindtap="poster" class="share-btn" open-type="share">分享朋友圈</button>
                 </view>
                 <view class="main-container-record">
                         <text class="main-record-title">记录：</text>
-                        <text class="main-record-item" wx:for="{{records}}">{{(index+1)+ '. ' + item.content}}</text>                </view>
+                        <text class="main-record-item" wx:for="{{records}}">{{(index+1)+ '. ' + item.content}}</text>
+                </view>
         </view>
 
 </view>

@@ -1,16 +1,10 @@
 /* pages/config/config.wxss */
-/* #turnTable{
-        width: 300px;
-        height: 300px;
-        display: block;
-        position: relative;
-        border-color: yellow;
-        border: solid;
-} */
+
 page {
 	background: #fff;
 }
 
+/* 标题 */
 .header{
 	padding: 1rem 0;
 	text-align: center;
@@ -27,14 +21,14 @@ page {
 
 
 /* 转盘 */
-.canvas-container ul,
-.canvas-container li{
+.table-container ul,
+.table-container li{
   margin: 0 ;
   padding: 0;
   list-style: none;
 }
 
-.canvas-container{
+.table-container{
   margin: 0 auto;
   position: relative;
   width: 300px;
@@ -44,7 +38,7 @@ page {
   box-shadow: 0 2px 3px #333,
               0 0 2px #000;
 }
-.canvas-content{
+.table-content{
   position: absolute;
   left: 0;
   top: 0;
@@ -56,14 +50,9 @@ page {
   background-clip: padding-box;
   background-color: #ffcb3f;
 }
-.canvas-element{
-  position: relative;
-  z-index: 1;
-  width: inherit;
-  height: inherit;
-  border-radius: 50%;
-}
-.canvas-list{
+
+/*选项*/
+.table-list{
   position: absolute;
   left: 0;
   top: 0;
@@ -71,7 +60,7 @@ page {
   height: inherit;
   z-index: 9999;
 }
-.canvas-item{
+.table-item{
   position: absolute;
   left: 0;
   top: 0;
@@ -81,7 +70,7 @@ page {
   font-weight: bold;
   text-shadow: 0 1px 1px rgba(255,255,255,.6);
 }
-.canvas-item-text{
+.table-item-text{
   position: relative;
   display: block;
   padding-top: 20px;
@@ -95,7 +84,7 @@ page {
 }
 
 /* 分隔线 */
-.canvas-line{
+.table-line{
   position: absolute;
   left: 0;
   top: 0;
@@ -103,7 +92,7 @@ page {
   height: inherit;
   z-index: 99;
 }
-.canvas-litem{
+.table-litem{
   position: absolute;
    left: 150px;
    top: 0;
@@ -116,7 +105,7 @@ page {
 }
 
 
-.canvas-btn{
+.table-btn{
   position: absolute;
   left: 110px;
   top: 110px;
@@ -133,7 +122,7 @@ page {
   box-shadow: 0 3px 5px rgba(0,0,0,.6);
   text-decoration: none;
 }
-.canvas-btn::after{
+.table-btn::after{
   position: absolute;
   display: block;
   /* before和:after时必须设置其content属性，否则伪元素就不起作用 */
@@ -148,12 +137,12 @@ page {
   border-color: transparent;
   border-bottom-color: #E44025; 
 }
-/* .canvas-btn.disabled{
+/* .table-btn.disabled{
     pointer-events: none;
     background: #B07A7B;
     color: #ccc;
 }
-.canvas-btn.disabled::after{
+.table-btn.disabled::after{
   border-bottom-color: #B07A7B;
 } */
 
@@ -167,6 +156,25 @@ page {
 /* 查看中奖 */
 .main-container{
 	margin: 1rem 2rem;
+}
+.main-container-btn{
+    display:flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+}
+.share-btn{
+    /* border-radius: 4px; */
+    font-size: 40rpx;
+    /* font-weight: 700; */
+    /* padding: 8px 24px; */
+    background-color: #3a3b64;
+    color:#fff;
+    border-radius: 50%;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    text-align: center;
+    padding-left: 14px;
+    padding-right: 14px;
 }
 
 .main-container-record{

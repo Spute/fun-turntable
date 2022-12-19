@@ -18,6 +18,5 @@
             <view class="edit-btn" bindtap="editTurnTable" data-titleIndex="{{titleIndex}}">编辑</view>
             <image class="drop-icon" src="../../image/drop.png" bindtap="dropSelect" data-titleIndex="{{titleIndex}}"></image>
         </view>
-
     </view>
 </view>

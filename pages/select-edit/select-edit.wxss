@@ -9,17 +9,29 @@
 .title{
     border: 2rpx solid blue;
     display: flex;
+    margin: 8rpx;
 }
 
 .item-container{
     border: 2rpx solid blue;
     display: flex;
+    margin: 8rpx;
+}
+
+.del-btn{
+    border: 2rpx solid rgb(194, 76, 115);
+    display: flex;
+    /* flex-direction: row-reverse; */
+    justify-content: space-between;
+    margin:4rpx;
+    
 }
 
 .add-btn{
-    border: 2rpx solid blue;
+    border: 2rpx solid rgb(194, 76, 115);
     display: flex;
     /* flex-direction: row-reverse; */
     justify-content: space-between;
     
 }
+

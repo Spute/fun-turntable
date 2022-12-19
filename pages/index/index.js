@@ -7,23 +7,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        // records: [
-        //     { content: '8元红包' },
-        //     { content: '6元红包' },
-        //     { content: '7元红包' },
-        //     { content: '3元红包' },
-        // ]
-        // records:[
-        //     {content:"日本料理"},
-        //     {content:"火锅"},
-        //     {content:"自己多少斤心里没点数"},
-        //     {content:"泰国菜"},
-        //     {content:"海鲜"},
-        //     {content:"烤鱼"},
-        //     {content:"拉面"},
-        //     {content:"麻辣烫"},
-        //     {content:"自助餐"},
-        // ]
         records: []
     },
 
@@ -74,49 +57,39 @@ Page({
         console.log('clear record', this.data)
     },
     animationHandler() {
-        // 旋转抽奖
         app.runDegs = app.runDegs || 0
-        console.log('deg', app.runDegs)
-        // app.runDegs = app.runDegs + (360 - app.runDegs % 360) + (360 * runNum - awardIndex * (360 / 6))
         app.runDegs += 3240
-        console.log('deg', app.runDegs)
 
         var animationRun = wx.createAnimation({
-            duration: 4000,
+            duration: 3000,
             timingFunction: 'ease'
         })
-        // that.animationRun = animationRun
         animationRun.rotate(app.runDegs).step()
         this.setData({
             animationData: animationRun.export(),
-            btnDisabled: 'disabled'
         })
-        // app.runDegs = 0
     },
-    drawTruntable() {
 
+    drawTruntable() {
         var awardsConfig = app.awardsConfig.awards,
             len = awardsConfig.length,
-            html = [],
-            turnNum = 1 / len  // 文字旋转 turn 值
-        this.setData({
-            btnDisabled: app.awardsConfig.chance ? '' : 'disabled'
-        })
+            awardsList = [],
+            turnNum = 1 / len
         for (var i = 0; i < len; i++) {
             // 奖项列表
-            html.push({
-                turn: i * turnNum + 'turn',
-                lineTurn: i * turnNum + turnNum / 2 + 'turn',
-                award: awardsConfig[i].name
+            awardsList.push({
+                turn: i * turnNum + 'turn',  // 文字旋转turn 值
+                lineTurn: i * turnNum + turnNum / 2 + 'turn', // 线条旋转turn 值
+                award: awardsConfig[i].name  // 文字
             });
-            console.log(html)
         }
         this.setData({
-            awardsList: html
+            awardsList: awardsList
         });
 
     },
-    getLottery: function () {
+
+    getLottery() {
         var awardsConfig = app.awardsConfig
         var runNum = 8
         const trunTime = app.trunTime
@@ -124,15 +97,12 @@ Page({
         var awardIndex = Math.random() * awardsConfig.awards.length >>> 0;
 
         // 获取奖品配置
-
         if (awardIndex < 2) awardsConfig.chance = false
         console.log("awardIndex", awardIndex)
 
         // 旋转抽奖
         app.runDegs = app.runDegs || 0
-        console.log('deg', app.runDegs)
         app.runDegs = app.runDegs + (360 - app.runDegs % 360) + (360 * runNum - awardIndex * (360 / awardsConfig.awards.length))
-        console.log('deg', app.runDegs)
 
         var animationRun = wx.createAnimation({
             duration: trunTime,
@@ -142,7 +112,6 @@ Page({
         animationRun.rotate(app.runDegs).step()
         that.setData({
             animationData: animationRun.export(),
-            btnDisabled: 'disabled'
         })
 
         // 记录奖品
@@ -150,20 +119,13 @@ Page({
         winAwards.data.push(awardsConfig.awards[awardIndex].name + '1个')
         wx.setStorageSync('winAwards', winAwards)
 
-
-
         // 中奖提示
         setTimeout(function () {
             wx.showModal({
                 title: '恭喜',
-                content: '获得' + (awardsConfig.awards[awardIndex].name),
+                content: '获得`' + (awardsConfig.awards[awardIndex].name) + "`",
                 showCancel: false
             })
-            if (awardsConfig.chance) {
-                that.setData({
-                    btnDisabled: ''
-                })
-            }
 
             // 更新记录
             console.log(that.data, 'reocrd')
@@ -175,6 +137,30 @@ Page({
             })
 
         }, trunTime, that);
-
     },
+
+    share(event){
+        console.log('share')
+        wx.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage'],
+            success:this.onShareAppMessage(),
+          })
+    },
+
+    poster(event){
+        console.log('share')
+        wx.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareTimeline','shareAppMessage'],
+            success:this.onShareTimeline(),
+          })
+    },
+    onShareAppMessage(){
+        success: console.log('onShareAppMessage success')
+    },
+    
+    onShareTimeline(){
+        // console.log('hello')
+    }
 })

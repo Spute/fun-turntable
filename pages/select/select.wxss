@@ -116,7 +116,8 @@
 }
 
 .sub-item{
-    background-color:gray;
+    background-color:#ddd;
+    
     padding-left: 5%;
     /* visibility:visible; */
 }

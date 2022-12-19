@@ -18,7 +18,6 @@ Page({
     onLoad(options) {
         //     console.log(app.hotSelect,app)
         //     this.data.hotSelect=app.hotSelect
-        //     console.log(this.data)
     },
 
     /**
@@ -37,7 +36,10 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        console.log('onLoad',this.data)
+        this.setData({
+            'hotSelect': this.data.hotSelect
+        })
     },
 
     /**
