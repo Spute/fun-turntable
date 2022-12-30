@@ -34,7 +34,6 @@ Page({
 
         this.data.selectData = app.hotSelect[selectId]
         this.data.selectId = selectId
-        console.log("data", this.data)
         this.setData({
             "selectData": this.data.selectData,
         })
@@ -84,12 +83,6 @@ Page({
 
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    },
     inputTitle(event) {
         console.log("event", event)
         this.data.selectData['title'] = event.detail.value
@@ -99,7 +92,6 @@ Page({
         const index = event.currentTarget.dataset.index
         console.log(index, app.hotSelect[index], event.detail.value)
         this.data.selectData['selects'][index].name = event.detail.value
-
     },
 
 

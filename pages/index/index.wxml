@@ -27,11 +27,15 @@
 
         <view class="main-container">
                 <view class="main-container-btn">
-                        <button bindtap="clearRecord" type="primary">清空记录</button>
+                    <button bindtap="share" class="share-btn" open-type="share">分享好友</button>
+                    <button bindtap="clearRecord" type="primary">清空记录</button>
+
+                    <button bindtap="poster" class="share-btn" open-type="share">分享朋友圈</button>
                 </view>
                 <view class="main-container-record">
                         <text class="main-record-title">记录：</text>
-                        <text class="main-record-item" wx:for="{{records}}">{{(index+1)+ '. ' + item.content}}</text>                </view>
+                        <text class="main-record-item" wx:for="{{records}}">{{(index+1)+ '. ' + item.content}}</text>
+                </view>
         </view>
 
 </view>

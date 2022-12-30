@@ -168,6 +168,25 @@ page {
 .main-container{
 	margin: 1rem 2rem;
 }
+.main-container-btn{
+    display:flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+}
+.share-btn{
+    /* border-radius: 4px; */
+    font-size: 40rpx;
+    /* font-weight: 700; */
+    /* padding: 8px 24px; */
+    background-color: #3a3b64;
+    color:#fff;
+    border-radius: 50%;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    text-align: center;
+    padding-left: 14px;
+    padding-right: 14px;
+}
 
 .main-container-record{
 	padding: 1rem 0;
