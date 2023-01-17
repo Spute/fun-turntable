@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/config/config",
     "pages/select/select",
     "pages/select-edit/select-edit",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {
