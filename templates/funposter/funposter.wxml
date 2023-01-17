@@ -1,0 +1,9 @@
+<template name="mytemplate">
+    <text>templates test</text>
+</template>
+<template name="fun-poster">
+    <button bindtap='create'>生成</button>
+    <canvas canvas-id="canvas" class="canvas" style="position:absolute;width:{{canvasWidth}};height:{{canvasHeight}};left:{{canvasLeft}};">
+    </canvas>
+
+</template>

@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+    "usingComponents": {
+      "share-image": "/components/mini-poster/components/share_image/share_image"
+    }
 }

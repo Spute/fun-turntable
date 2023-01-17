@@ -1,43 +1,50 @@
 <view class="wrapper">
 
-<view class="header">
+    <view class="header">
         <text class="header-title"> {{title}} </text>
         <text class="header-subtitle"> {{subTitle}} </text>
-</view>
+    </view>
 
-<view class="main">
+    <view class="main">
         <view class="table-container">
-                <view animation="{{animationData}}" class="table-content">
+            <view animation="{{animationData}}" class="table-content">
 
-                        <view class="table-line">
-                                <view class="table-litem" wx:for="{{awardsList}}" wx:key="unique" style="-webkit-transform: rotate({{item.lineTurn}});transform: rotate({{item.lineTurn}})"></view>
-                        </view>
-
-                        <view class="table-list">
-                                <view class="table-item" wx:for="{{awardsList}}" wx:key="unique">
-                                        <view class="table-item-text" style="-webkit-transform: rotate({{item.turn}});transform: rotate({{item.turn}})">{{item.award}}</view>
-                                </view>
-                        </view>
-
-
+                <view class="table-line">
+                    <view class="table-litem" wx:for="{{awardsList}}" wx:key="unique" style="-webkit-transform: rotate({{item.lineTurn}});transform: rotate({{item.lineTurn}})"></view>
                 </view>
 
-                <view bindtap="getLottery" class="table-btn {{btnDisabled}}">开始</view>
+                <view class="table-list">
+                    <view class="table-item" wx:for="{{awardsList}}" wx:key="unique">
+                        <view class="table-item-text" style="-webkit-transform: rotate({{item.turn}});transform: rotate({{item.turn}})">{{item.award}}</view>
+                    </view>
+                </view>
+
+
+            </view>
+
+            <view bindtap="getLottery" class="table-btn {{btnDisabled}}">开始</view>
         </view>
 
         <view class="main-container">
-                <view class="main-container-btn">
-                    <button bindtap="share" class="share-btn" open-type="share">分享好友</button>
-                    <button bindtap="clearRecord" type="primary">清空记录</button>
+            <view class="main-container-btn">
+                <button bindtap="share" class="share-btn" open-type="share">分享好友</button>
+                <button bindtap="clearRecord" type="primary">清空记录</button>
 
-                    <button bindtap="poster" class="share-btn" open-type="share">分享朋友圈</button>
-                </view>
-                <view class="main-container-record">
-                        <text class="main-record-title">记录：</text>
-                        <text class="main-record-item" wx:for="{{records}}">{{(index+1)+ '. ' + item.content}}</text>
-                </view>
+                <button bindtap="poster" class="share-btn" open-type="share">分享朋友圈</button>
+                
+                <!-- <import src="../../templates/funposter/funposter.wxml" />
+                <template is="fun-poster" data="" />
+                    <button bindtap='create'>生成</button>
+                <canvas canvas-id="myCanvas" class="canvas" style="position:absolute;width:{{canvasWidth}};height:{{canvasHeight}};left:{{canvasLeft}};"> </canvas> -->
+
+            </view>
+            <view class="main-container-record">
+                <text class="main-record-title">记录：</text>
+                <text class="main-record-item" wx:for="{{records}}">{{(index+1)+ '. ' + item.content}}</text>
+            </view>
+
         </view>
 
-</view>
+    </view>
 
 </view>

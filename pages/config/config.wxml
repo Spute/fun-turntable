@@ -1,3 +1,13 @@
-<view>
-    开发中，敬请期待。。。
+<button type="primary" bindtap="openPopup" data-index="1">打开中间弹窗</button>
+
+<view class="info-center" style="height: {{widHeight*0.8}}px; width:{{widWidth*0.8}}px;" wx:if="{{showIndex=='1'}}">
+  <view class="canvas-container">
+    <canvas id="myCanvas" canvas-id="posterCanvas" type="2d" />
+
+  </view>
+
+  <view class="row-btn">
+    <view class="left-btn" bindtap="closePopup">返回</view>
+    <view class="right-btn" bindtap="savePoster">保存图片</view>
+  </view>
 </view>
