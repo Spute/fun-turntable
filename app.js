@@ -35,6 +35,19 @@ App({
   },
   hotSelect: [
     {
+      title: '2023年贺岁片',
+      display: false,
+      selects: [
+        { 'name': "无名" },
+        { 'name': "深海" },
+        { 'name': "满江红" },
+        { 'name': "交换人生" },
+        { 'name': "流浪地球2" },
+        { 'name': "熊出没" },
+        { 'name': "中国乒乓绝地反击" },
+      ]
+    },
+    {
       title: '聚餐吃什么？',
       display: false,
       selects: [
@@ -47,19 +60,6 @@ App({
         { 'name': "拉面" },
         { 'name': "麻辣烫" },
         { 'name': "自助餐" },
-      ]
-    },
-    {
-      title: '看啥电影？',
-      display: false,
-      selects: [
-        { 'name': "无名" },
-        { 'name': "深海" },
-        { 'name': "满江红" },
-        { 'name': "交换人生" },
-        { 'name': "流浪地球2" },
-        { 'name': "熊出没" },
-        { 'name': "中国乒乓绝地反击" },
       ]
     },
     {
