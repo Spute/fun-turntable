@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/select/select",
     "pages/index/index",
     "pages/config/config",
-    "pages/select/select",
     "pages/select-edit/select-edit",
     "pages/logs/logs"
   ],

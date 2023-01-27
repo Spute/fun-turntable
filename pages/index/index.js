@@ -13,39 +13,6 @@ Page({
     canvasLeft: "400rpx",
     canvasTop: "400rpx",
     records: [],
-    dataList: {
-      canvasData: {
-        type: 'image',
-        url: '',
-        top: 0,
-        left: 0,
-        width: 750,
-        height: 1334,
-        comment: '背景图',
-        btnText: '保存至相册'
-      },
-      content: [{
-        type: 'image',
-        url: '',
-        top: 136,
-        left: 100,
-        shape: 'square',
-        width: 290,
-        height: 186,
-        comment: '头像'
-      }, {
-        type: 'text',
-        content: '白山羊',
-        top: 336,
-        left: 100,
-        fontSize: 40,
-        lineHeight: 40,
-        color: '#f00',
-        textAlign: 'left',
-        weight: 'bold',
-        maxWidth: 287
-      }]
-    },
     showIndex: null, //打开弹窗的对应下标
     imagePath: '',
   },
@@ -154,10 +121,6 @@ Page({
       animationData: animationRun.export(),
     })
 
-    // 记录奖品
-    var winAwards = wx.getStorageSync('winAwards') || { data: [] }
-    winAwards.data.push(awardsConfig.awards[awardIndex].name + '1个')
-    wx.setStorageSync('winAwards', winAwards)
 
     // 中奖提示
     setTimeout(function () {
@@ -281,6 +244,7 @@ Page({
     image.onload = function () {
       //定位图像(左上角坐标)，并规定图像的宽度和高度
       ctx.drawImage(image, canvas.width / 2 - imgWidth / 2, (canvas.height + endHieght) / 2 - imgHeight / 2, imgWidth, imgHeight);
+      // canvas保存为图片
       pageObj.saveCanvasToFile(canvas, pageObj)
     };
 

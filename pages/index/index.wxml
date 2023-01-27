@@ -51,7 +51,7 @@
 
       <view class="main-container-record">
         <text class="main-record-title">记录：</text>
-        <text class="main-record-item" wx:for="{{records}}">{{(index+1)+ '. ' + item.content}}</text>
+        <text class="main-record-item" wx:for="{{records}}"  wx:key="*this">{{(index+1)+ '. ' + item.content}}</text>
       </view>
 
     </view>
