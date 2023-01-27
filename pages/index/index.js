@@ -87,33 +87,6 @@ Page({
   onReady() {
 
   },
-  create(e) {
-    let that = this;
-    const query = wx.createSelectorQuery();
-    console.log('create canvas')
-    query.select('.canvas')
-      .fields({ node: true, size: true })
-      .exec((res) => {
-        const canvas = res[0].node;
-        const dpr = wx.getSystemInfoSync().pixelRatio;
-        canvas.width = res[0].width * dpr
-        canvas.height = res[0].height * dpr
-        const ctx = canvas.getContext('2d')
-        ctx.scale(dpr, dpr)
-        //canvas.createImage()在微信版本7.0.20会有报错，进入不了onload。 但是在7.0.21已经修复。
-        let pic = canvas.createImage();
-        ctx.fillRect(0, 0, 100, 100)
-        pic.src = "/image/icon-HL.png"; //可以是本地，也可以是网络图片
-        console.log(pic)
-        pic.onload = () => {
-          //不要用官方示例的图片路径，包括网上在这之前所有的文档/示例里是地址链接的都不要看了，要用image对象！
-          ctx.drawImage(pic, 0, 0, 150, 150);
-
-        }
-      }
-      )
-
-  },
   start() {
     this.animationHandler()
   },
@@ -123,7 +96,6 @@ Page({
     this.setData({
       records: this.data.records
     })
-    console.log('clear record', this.data)
   },
   animationHandler() {
     app.runDegs = app.runDegs || 0
@@ -167,7 +139,6 @@ Page({
 
     // 获取奖品配置
     if (awardIndex < 2) awardsConfig.chance = false
-    console.log("awardIndex", awardIndex)
 
     // 旋转抽奖
     app.runDegs = app.runDegs || 0
@@ -197,7 +168,6 @@ Page({
       })
 
       // 更新记录
-      console.log(that.data, 'reocrd')
       that.data.records.push({
         'content': awardsConfig.awards[awardIndex].name
       });
@@ -209,7 +179,6 @@ Page({
   },
 
   share(event) {
-    console.log('share')
     wx.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage'],
@@ -218,7 +187,6 @@ Page({
   },
 
   poster(event) {
-    console.log('share')
     wx.showShareMenu({
       withShareTicket: true,
       menus: ['shareTimeline', 'shareAppMessage'],
@@ -261,26 +229,17 @@ Page({
         const canvas = res[0].node;
         //获取设备的像素比
         const dpr = wx.getSystemInfoSync().pixelRatio;
-        console.log('res', res)
-        console.log('dpr', dpr)
 
         canvas.width = res[0].width * dpr
         canvas.height = res[0].height * dpr
         const ctx = canvas.getContext('2d')
         //缩放当前绘图
         // ctx.scale(dpr, dpr)
-
-        const awardTitle = app.awardsConfig['title']
-        const awardNames = []
-        const awards = app.awardsConfig["awards"]
-        for (var i = 0; i < awards.length; i++) {
-          awardNames.push(awards[i]['name']);
-        }
-
+        
+        // 透明像素设置成白色
         this.bgToWhite(ctx, canvas)
-
-        this.drawRamText(canvas, ctx, awardNames)
-        const endHieght = this.drawTitle(canvas, ctx, awardTitle)
+        this.drawRamText(canvas, ctx)
+        const endHieght = this.drawTitle(canvas, ctx)
         this.drawQRCode(canvas, ctx, endHieght, pageObj)
         ctx.save(); //保存之前的画布设置
       })
@@ -300,7 +259,9 @@ Page({
       }
     }, pageObj);
   },
-  drawTitle(canvas, ctx, awardTitle) {
+  drawTitle(canvas, ctx) {
+    const awardTitle = app.awardsConfig['title']
+
     const beginX = canvas.width / 2,
       beginY = canvas.height / 8;
     const curXY = unit.fillCnText(awardTitle, 1, ctx, beginX, beginY)
@@ -337,7 +298,13 @@ Page({
     }
     ctx.putImageData(imageData, 0, 0);
   },
-  drawRamText(canvas, ctx, awardNames) {
+  drawRamText(canvas, ctx) {
+    const awardNames = []
+    const awards = app.awardsConfig["awards"]
+    for (var i = 0; i < awards.length; i++) {
+      awardNames.push(awards[i]['name']);
+    }
+
     var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
     gradient.addColorStop("0", "magenta");
     gradient.addColorStop("0.3", "blue");
@@ -400,7 +367,6 @@ Page({
           confirmColor: '#333',
           success: function (res) {
             if (res.confirm) {
-              console.log('999999')
               console.log('用户点击确定');
               /* 该隐藏的隐藏 */
               that.setData({
