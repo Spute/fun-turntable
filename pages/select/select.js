@@ -1,14 +1,16 @@
 // pages/select.js
 
 const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
+  that: this,
   data: {
     hotSelect: [],
-    menuID: 1,
+    menuID: null,
     personSelect: [],
   },
 
@@ -16,10 +18,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    //     console.log(app.hotSelect,app)
-    //     this.data.hotSelect=app.hotSelect
+    console.log('select onLoad')
     const personSelect = wx.getStorageSync('personSelect') || [{
-      chance: true,
+      display: true,
       awards: [
         { 'name': "日本料理" },
         { 'name': "火锅" },
@@ -37,18 +38,20 @@ Page({
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs)
     this.data['personSelect'] = personSelect
-
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    console.log(app.hotSelect, app)
+    console.log('select onReady')
     this.data.hotSelect = app.hotSelect
+    this.data.menuID = app.menuID
     console.log(this.data)
     this.setData({
-      'hotSelect': this.data.hotSelect
+      'menuID': this.data.menuID,
+      'hotSelect': this.data.hotSelect,
+      'personSelect': this.data.personSelect,
     })
   },
 
@@ -56,9 +59,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    console.log('onLoad', this.data)
+    console.log('select onshow', this.data)
+    const personSelect = wx.getStorageSync('personSelect') || []
     this.setData({
-      'hotSelect': this.data.hotSelect
+      'hotSelect': this.data.hotSelect,
+      'personSelect': personSelect,
     })
   },
 
@@ -66,14 +71,18 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    console.log('select page onHide')
+    app.menuID = this.data.menuID
+    wx.setStorageSync('personSelect', this.data.personSelect)
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    console.log('select page onUnload')
+    app.menuID = this.data.menuID
+    wx.setStorageSync('personSelect', this.data.personSelect)
   },
 
   /**
@@ -96,18 +105,34 @@ Page({
   onShareAppMessage() {
 
   },
+  getTurnTable() {
+    if (this.data.menuID == 1) {
+      return app.hotSelect
+    } else if (this.data.menuID == 2) {
+      return this.data.personSelect
+    } else {
+      console.log('menuID error', this.data.menuID)
+    }
+  },
   selectTurnTable(event) {
     console.log(event)
     const selectIndex = event.currentTarget.dataset.titleindex
+    const turnTable = this.getTurnTable()
     app.awardsConfig = {
       chance: true,
-      awards: app.hotSelect[selectIndex].selects,
-      title: app.hotSelect[selectIndex].title,
-      subTitle: app.hotSelect[selectIndex].subTitle,
+      awards: turnTable[selectIndex].awards,
+      title: turnTable[selectIndex].title,
+      subTitle: turnTable[selectIndex].subTitle,
     }
     wx.reLaunch({
       url: '/pages/index/index',
     })
+  },
+  deleteTurnTable(event) {
+    console.log(event)
+    const selectIndex = event.currentTarget.dataset.titleindex
+    this.data.personSelect.splice(selectIndex,1)
+    this.setData({personSelect:this.data.personSelect})
   },
   editTurnTable(event) {
     // wx.reLaunch({
@@ -119,27 +144,47 @@ Page({
 
   },
   dropSelect(event) {
-    console.log("event", event)
-    const titleIndex = event.currentTarget.dataset.titleindex
-    console.log(app.hotSelect[titleIndex].display)
-    app.hotSelect[titleIndex]['display'] = !app.hotSelect[titleIndex].display
-    console.log('data', this.data)
+    var tabName = "hotSelect"
+    var tabData = 1
+    var titleIndex = event.currentTarget.dataset.titleindex
+    if (this.data.menuID == 1) {
+      tabName = "hotSelect";
+      app.hotSelect[titleIndex]['display'] = !app.hotSelect[titleIndex].display
+      tabData = app.hotSelect;
+    } else if (this.data.menuID == 2) {
+      tabName = "personSelect";
+      this.data.personSelect[titleIndex]['display'] = !this.data.personSelect[titleIndex]['display']
+      tabData = this.data.personSelect;
+    } else {
+      console.log('menuID error', this.data.menuID, event)
+    }
     this.setData({
-      hotSelect: app.hotSelect,
-      // "title.display": this.data.hotSelect[selectIndex].display
+      // ES6 允许声明在对象字面量时使用简写语法，来初始化属性变量和函数的定义方法，并且允许在对象属性中进行计算操作：
+      [tabName]: tabData,
     })
+
   },
   inputBlur(event) {
     console.log("event", event)
     const titleIndex = event.currentTarget.dataset.titleindex
     const subIndex = event.currentTarget.dataset.subindex
     console.log(titleIndex, app.hotSelect[titleIndex], event.detail.value)
-    app.hotSelect[titleIndex]['selects'][subIndex].name = event.detail.value
+    this.getTurnTable()[titleIndex]['awards'][subIndex].name = event.detail.value
   },
-  menuClick(e) {
+  menuClick(e){
     var id = e.currentTarget.dataset.id;
     this.setData({
       menuID: id,
     })
+  },
+  addPersonItem(e){
+    this.data.personSelect.push(
+      {
+        "awards":[{"name":"示例"}],
+        "display": false,
+        "title": "标题",
+      }
+    );
+    this.setData({personSelect: this.data.personSelect});
   },
 })

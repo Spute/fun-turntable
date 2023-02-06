@@ -5,15 +5,15 @@
         <input type="text" class="select-item" maxlength="24" bindblur="inputTitle" value="{{selectData.title}}" />
 
     </view>
-    <view class="item-container" wx:for="{{selectData.selects}}">
+    <view class="item-container" wx:for="{{selectData.awards}}">
         <text>选项{{index}}：</text>
         <input type="text" class="select-item" maxlength="12" bindblur="inputItem" value="{{item.name}}" data-index="{{index}}" />
-        <view class="del-btn" bindtap="delItem" data-titleIndex="{{titleIndex}}">删除</view>
+        <view class="del-btn" bindtap="delItem" data-index="{{index}}">删除</view>
 
     </view>
-    <view class="add-btn" data-titleIndex="{{titleIndex}}">
-        <input type="text" class="select-item" maxlength="12" value="{{item.name}}" data-index="{{index}}" />
-        <view bindtap="addItem">新增</view>
-    </view>
+    <!-- <view class="add-btn" data-titleIndex="{{titleIndex}}"> -->
+        <!-- <input type="text" class="select-item" maxlength="12" value="{{item.name}}" data-index="{{index}}" /> -->
+        <view class="add-btn" bindtap="addItem">新增</view>
+    <!-- </view> -->
 
 </view>

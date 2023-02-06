@@ -5,10 +5,10 @@
 </view>
 <view class="select-container">
     <!-- 热门转盘 -->
-    <view wx:for="{{hotSelect}}" wx:key="title" class="item-container {{menuID==1?'':'hide'}}" wx:for-item="title" wx:for-index="titleIndex">
+    <view wx:for="{{hotSelect}}" wx:key="*this" class="item-container {{menuID==1?'':'hide'}}" wx:for-item="title" wx:for-index="titleIndex">
         <view class="select-item">
             {{title.title}}
-            <view class="sub-item" wx:for="{{title.selects}}" wx:key="*this" wx:for-item="subItem" wx:for-index="subItemIndex" wx:if="{{title.display}}">
+            <view class="sub-item" wx:for="{{title.awards}}" wx:key="*this" wx:for-item="subItem" wx:for-index="subItemIndex" wx:if="{{title.display}}">
 
                 <input class="weui-input" type="text" maxlength="10" bindblur="inputBlur" value="{{subItem.name}}" data-titleIndex="{{titleIndex}}" data-subIndex="{{subItemIndex}}" />
 
@@ -22,19 +22,24 @@
     </view>
 
     <!-- 个人转盘 -->
-    <view wx:for="{{personSelect}}" wx:key="title" class="item-container {{menuID==2?'':'hide'}}" wx:for-item="title" wx:for-index="titleIndex">
+    <view wx:for="{{personSelect}}" wx:key="*this" class="item-container {{menuID==2?'':'hide'}}" wx:for-item="title" wx:for-index="titleIndex">
         <view class="select-item">
             {{title.title}}
-            <view class="sub-item" wx:for="{{title.selects}}" wx:key="*this" wx:for-item="subItem" wx:for-index="subItemIndex" wx:if="{{title.display}}">
+            <view class="sub-item {{title.display?'':'hide'}}" wx:for="{{title.awards}}" wx:key="*this" wx:for-item="subItem" wx:for-index="subItemIndex" wx:if="{{title.display}}">
 
                 <input class="weui-input" type="text" maxlength="10" bindblur="inputBlur" value="{{subItem.name}}" data-titleIndex="{{titleIndex}}" data-subIndex="{{subItemIndex}}" />
 
             </view>
         </view>
         <view class="feature-contianer">
-            <view class="select-btn" bindtap="selectTurnTable" data-titleIndex="{{titleIndex}}">选择转盘</view>
+            <view class="select-btn" bindtap="selectTurnTable" data-titleIndex="{{titleIndex}}">选择</view>
+            <view class="select-btn" bindtap="deleteTurnTable" data-titleIndex="{{titleIndex}}">删除</view>
             <view class="edit-btn" bindtap="editTurnTable" data-titleIndex="{{titleIndex}}">编辑</view>
             <image class="drop-icon" src="../../image/drop.png" bindtap="dropSelect" data-titleIndex="{{titleIndex}}"></image>
         </view>
+    </view>
+
+    <view class="item-container">    
+      <view class="add-btn {{menuID==2?'':'hide'}}" bindtap="addPersonItem">新增</view>
     </view>
 </view>

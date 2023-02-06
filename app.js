@@ -33,11 +33,12 @@ App({
     title: '聚餐吃什么？',
     subTitle: "",
   },
+  menuID : 1,
   hotSelect: [
     {
       title: '2023年贺岁片',
       display: false,
-      selects: [
+      awards: [
         { 'name': "无名" },
         { 'name': "深海" },
         { 'name': "满江红" },
@@ -50,7 +51,7 @@ App({
     {
       title: '聚餐吃什么？',
       display: false,
-      selects: [
+      awards: [
         { 'name': "日本料理" },
         { 'name': "火锅" },
         { 'name': "自己多少斤心里没点数" },
@@ -65,7 +66,7 @@ App({
     {
       title: '今天谁买单？',
       display: false,
-      selects: [
+      awards: [
         { "name": "身高最高的" },
         { "name": "微信好友最多的" },
         { "name": "年龄最小的" },
@@ -77,7 +78,7 @@ App({
     {
       title: '真心话',
       display: false,
-      selects: [
+      awards: [
         { "name": "描述经历过最尴尬的事" },
         { "name": "带过异性回家吗" },
         { "name": "第一次恋爱几岁" },
@@ -93,7 +94,7 @@ App({
     {
       title: '狼人杀身份牌',
       display: false,
-      selects: [
+      awards: [
         { "name": "预言家" },
         { "name": "狼人" },
         { "name": "村民" },
@@ -110,7 +111,7 @@ App({
     {
       title: '大冒险',
       display: false,
-      selects: [
+      awards: [
         { "name": "公主抱离你最近的异性" },
         { "name": "向一位同性表白3分钟" },
         { "name": "向一位异性表白3分钟" },
@@ -122,7 +123,7 @@ App({
     {
       title: '骰子',
       display: false,
-      selects: [
+      awards: [
         { "name": "1" },
         { "name": "2" },
         { "name": "3" },

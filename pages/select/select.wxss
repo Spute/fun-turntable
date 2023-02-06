@@ -130,3 +130,13 @@
 .hide {
   display: none;
 }
+
+.add-btn{
+  border: 2rpx solid rgb(194, 76, 115);
+  /* display: flex; */
+  /* flex-direction: row-reverse; */
+  /* justify-content: space-between; */
+  /* align-content: center; */
+  /* content: right; */
+  margin-left: auto;
+}
