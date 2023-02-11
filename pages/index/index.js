@@ -177,8 +177,7 @@ Page({
     this.setData({
       showIndex: index
     });
-    let that = this;
-    that.createPoster();
+    this.createPoster();
   },
   createPoster() {
     let pageObj = this;
