@@ -273,8 +273,9 @@ Page({
     gradient.addColorStop("0.3", "blue");
     gradient.addColorStop("0.6", "green");
     gradient.addColorStop("1.0", "red");
-    ctx.fillStyle = gradient;
-
+    // 真机调试有bug
+    // ctx.fillStyle = gradient;
+    
     var rowWidth = 0;
     var rowHeight = 0
     var lastRowHeight = 0
